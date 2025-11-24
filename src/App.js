@@ -84,6 +84,15 @@ const App = () => {
   // 渲染评论列表
   const [commentList, setCommentList] = useState(defaultList)
 
+  // delete 
+  const handleDel = (id) => {
+    console.log(id);//1 
+    // commentList 
+
+    setCommentList(commentList.filter(item => item.rpid !== id))
+
+  }
+
   return (
     <div className="app">
       {/* 导航 Tab */}
@@ -152,9 +161,12 @@ const App = () => {
                   <span className="reply-time">{'2023-11-11'}</span>
                   {/* 评论数量 */}
                   <span className="reply-time">点赞数:{100}</span>
-                  <span className="delete-btn">
-                    删除
-                  </span>
+
+                  {user.uid === item.user.uid &&
+                    <span className="delete-btn" onClick={() => handleDel(item.rpid)}>
+                      删除
+                    </span>}
+
 
                 </div>
               </div>
