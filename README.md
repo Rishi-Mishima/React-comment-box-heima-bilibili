@@ -1,70 +1,66 @@
-# Getting Started with Create React App
+# React Bilibili Comment UI
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A fully styled **Bilibili-style comment section** built using **React + SCSS**.  
+This project focuses on **replicating the visual layout** of Bilibili’s comment area, including:
 
-## Available Scripts
+- Navigation bar (最新 / 最热)
+- Comment input box
+- Avatar system
+- Comment list layout
+- Like count, delete actions
+- Clean Bilibili-style UI using SCSS Nested Rules
 
-In the project directory, you can run:
+> **Note:**  
+> This project currently focuses on the **UI layout**, while the comment publishing logic can be expanded later with `useState` or API integration.
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 📸 Preview
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+下面是你实现的 UI 效果示意图：
 
-### `npm test`
+<img src="./preview.png" width="800">
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 🚀 Features
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- ⚡️ React functional components
+- 🎨 SCSS（Nested + BEM-like structure）
+- 🧱 Bilibili-style UI layout
+- 👤 Avatar support (local images or remote URLs)
+- 🧵 Comment list rendering
+- 🖊 Input textarea auto height change on focus
+- 📦 Easy to extend (like / delete / sort…)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🛠 Tech Stack
 
-### `npm run eject`
+| 技术 | 用途 |
+|------|------|
+| **React 18** | 构建页面组件 |
+| **SCSS (Sass)** | 编写层级结构清晰的样式 |
+| **Vite / CRA** | 项目开发环境（取决于你的项目结构） |
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 📁 Project Structure
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+react-bilibili-comment/
+├── public/
+├── src/
+│   ├── images/
+│   │   └── avatar.png
+│   ├── App.js
+│   ├── App.scss
+│   ├── index.js
+│   └── ...
+└── package.json
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### ✨ How to Run
+1. Install dependencies
+```npm install```
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
