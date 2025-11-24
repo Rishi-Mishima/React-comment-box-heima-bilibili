@@ -24,7 +24,7 @@ const defaultList = [
     content: '哎哟，不错哦',
     // 评论时间
     ctime: '10-18 08:15',
-    like: 88,
+    like: 140,
   },
   {
     rpid: 2,
@@ -94,11 +94,26 @@ const App = () => {
 
   }
 
-  const [type, setType] = useState('hot')
-  // tab change - click 
-  const handleTabChange = (type) => {
-    console.log(type);
-    setType(type)
+  const [newType, setType] = useState('hot')
+  // tab change - click
+
+  const handleTabChange = (newType) => {
+    console.log(newType);
+    setType(newType)
+
+    // 拷贝一份（不能直接对 state 排序，会导致 Bug）
+    const newList = [...commentList]
+
+    // 列表排序
+    //lodash 
+    if (newType === 'hot') {
+      newList.sort((a, b) => b.like - a.like)
+    } else {
+      newList.sort((a, b) => new Date(b.ctime) - new Date(a.ctime))
+    }
+
+    // 更新列表
+    setCommentList(newList)
   }
 
   return (
@@ -115,7 +130,7 @@ const App = () => {
             {/* 高亮类名： active */}
             {tabs.map(item =>
             (<span key={item.type}
-              className={`nav-item ${type === item.type && 'active'}`}
+              className={`nav-item ${newType === item.type && 'active'}`}
               onClick={() => handleTabChange(item.type)
               } >{item.text}</span>))}
 
@@ -171,9 +186,9 @@ const App = () => {
                 <span className="reply-content">这是一条评论回复</span>
                 <div className="reply-info">
                   {/* 评论时间 */}
-                  <span className="reply-time">{'2023-11-11'}</span>
+                  <span className="reply-time">{item.ctime}</span>
                   {/* 评论数量 */}
-                  <span className="reply-time">点赞数:{100}</span>
+                  <span className="reply-time">点赞数:{item.like}</span>
 
                   {user.uid === item.user.uid &&
                     <span className="delete-btn" onClick={() => handleDel(item.rpid)}>
