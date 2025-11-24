@@ -85,6 +85,9 @@ const App = () => {
   // 渲染评论列表
   const [commentList, setCommentList] = useState(defaultList)
 
+  //sorting animation 
+  const [isSorting, setIsSorting] = useState(false)
+
   // delete 
   const handleDel = (id) => {
     console.log(id);//1 
@@ -107,13 +110,41 @@ const App = () => {
     // 列表排序
     //lodash 
     if (newType === 'hot') {
-      newList.sort((a, b) => b.like - a.like)
-    } else {
-      newList.sort((a, b) => new Date(b.ctime) - new Date(a.ctime))
+      // 最热：
+      // 1️⃣ 先按 like 降序
+      // 2️⃣ 如果 like 相同，再按时间降序（新的在前）
+
+      newList.sort((a, b) => {
+        if (b.like !== a.like) {
+          return b.like - a.like
+        }
+
+        // like 相同时，按时间（ctime）降序
+        return new Date(b.ctime) - new Date(a.ctime)
+      })
+
+    } else if (newType === 'time') {
+      // 最新：
+      // 1️⃣ 先按时间降序
+      // 2️⃣ 如果时间一样，再按 like 降序（点赞多的排前）
+
+      newList.sort((a, b) => {
+        const timeDiff = new Date(b.ctime) - new Date(a.ctime)
+        if (timeDiff !== 0) {
+          return timeDiff
+        }
+        return b.like - a.like
+      })
     }
 
     // 更新列表
     setCommentList(newList)
+
+    // 🔥 触发一次排序动画
+    setIsSorting(true)
+    setTimeout(() => {
+      setIsSorting(false)
+    }, 250) // 跟 CSS 动画时长对齐
   }
 
   return (
@@ -161,7 +192,7 @@ const App = () => {
           </div>
         </div>
         {/* 评论列表 */}
-        <div className="reply-list">
+        <div className={`reply-list ${isSorting ? 'sorting' : ''}`}>
           {/* 评论项 */}
 
           {commentList.map(item => (<div key={item.rpid} className="reply-item">
