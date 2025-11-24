@@ -19,7 +19,7 @@ This project focuses on **replicating the visual layout** of Bilibili’s commen
 
 实现的 UI 效果示意图：
 
-<img src="./image.png" width="800">
+<img src="./images/image.png" width="800">
 
 ---
 

@@ -1,6 +1,6 @@
 import './App.scss'
 import avatar from './images/bozai.png'
-
+import { useState } from 'react'
 /**
  * 评论列表的渲染和操作
  *
@@ -40,7 +40,7 @@ const defaultList = [
     rpid: 1,
     user: {
       uid: '30009257',
-      avatar,
+      avatar: './images/image.png',
       uname: '黑马前端',
     },
     content: '学前端就来黑马',
@@ -74,7 +74,16 @@ const tabs = [
   { type: 'time', text: '最新' },
 ]
 
+//--------------
+// 1. // 渲染评论列表
+
+
+
+
 const App = () => {
+  // 渲染评论列表
+  const [commentList, setCommentList] = useState(defaultList)
+
   return (
     <div className="app">
       {/* 导航 Tab */}
@@ -117,13 +126,15 @@ const App = () => {
         {/* 评论列表 */}
         <div className="reply-list">
           {/* 评论项 */}
-          <div className="reply-item">
+
+          {commentList.map(item => (<div key={item.rpid} className="reply-item">
             {/* 头像 */}
             <div className="root-reply-avatar">
               <div className="bili-avatar">
                 <img
                   className="bili-avatar-img"
                   alt=""
+                  src={item.user.avatar}
                 />
               </div>
             </div>
@@ -131,7 +142,7 @@ const App = () => {
             <div className="content-wrap">
               {/* 用户名 */}
               <div className="user-info">
-                <div className="user-name">jack</div>
+                <div className="user-name">{item.user.uname}</div>
               </div>
               {/* 评论内容 */}
               <div className="root-reply">
@@ -148,7 +159,8 @@ const App = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div>))}
+
         </div>
       </div>
     </div>
