@@ -3,6 +3,7 @@ import './App.scss'
 import avatar from './images/bozai.png'
 import { useState } from 'react'
 import classNames from 'classnames'
+import dayjs from 'dayjs'
 /**
  * 评论列表的渲染和操作
  *
@@ -153,16 +154,17 @@ const App = () => {
 
   const publishComment = () => {
     console.log(value);
+    const newId = new Date().getTime()
     setCommentList([
       ...commentList, {
-        rpid: 10000,
+        rpid: newId,
         user: {
           uid: '36080105',
           avatar: '',
           uname: '许嵩',
         },
         content: value,
-        ctime: '11-13 11:29',
+        ctime: dayjs(new Date()).format('MM-DD hh:mm'),
         like: 88,
       },
     ])
