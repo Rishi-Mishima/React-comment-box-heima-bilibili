@@ -211,8 +211,8 @@ const App = () => {
               onChange={(e) => setInput(e.target.value)}
             />
             {/* 发布按钮 */}
-            <div className="reply-box-send">
-              <div className="send-text" onClick={publishComment}>发布</div>
+            <div className="reply-box-send" onClick={publishComment}>
+              <div className="send-text" >发布</div>
             </div>
           </div>
         </div>
