@@ -148,6 +148,27 @@ const App = () => {
     }, 250) // 跟 CSS 动画时长对齐
   }
 
+  // 捕捉评论输入
+  const [value, setInput] = useState("")
+
+  const publishComment = () => {
+    console.log(value);
+    setCommentList([
+      ...commentList, {
+        rpid: 10000,
+        user: {
+          uid: '36080105',
+          avatar: '',
+          uname: '许嵩',
+        },
+        content: value,
+        ctime: '11-13 11:29',
+        like: 88,
+      },
+    ])
+  }
+
+
   return (
     <div className="app">
       {/* 导航 Tab */}
@@ -186,10 +207,12 @@ const App = () => {
             <textarea
               className="reply-box-textarea"
               placeholder="发一条友善的评论"
+              value={value}
+              onChange={(e) => setInput(e.target.value)}
             />
             {/* 发布按钮 */}
             <div className="reply-box-send">
-              <div className="send-text">发布</div>
+              <div className="send-text" onClick={publishComment}>发布</div>
             </div>
           </div>
         </div>
@@ -216,7 +239,7 @@ const App = () => {
               </div>
               {/* 评论内容 */}
               <div className="root-reply">
-                <span className="reply-content">这是一条评论回复</span>
+                <span className="reply-content">{item.content}</span>
                 <div className="reply-info">
                   {/* 评论时间 */}
                   <span className="reply-time">{item.ctime}</span>
