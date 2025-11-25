@@ -2,6 +2,7 @@ import { tab } from '@testing-library/user-event/dist/tab'
 import './App.scss'
 import avatar from './images/bozai.png'
 import { useState } from 'react'
+import classNames from 'classnames'
 /**
  * 评论列表的渲染和操作
  *
@@ -161,7 +162,8 @@ const App = () => {
             {/* 高亮类名： active */}
             {tabs.map(item =>
             (<span key={item.type}
-              className={`nav-item ${newType === item.type && 'active'}`}
+              // className={`nav-item ${newType === item.type && 'active'}`}
+              className={classNames('nav-item', { active: newType === item.type })}
               onClick={() => handleTabChange(item.type)
               } >{item.text}</span>))}
 
