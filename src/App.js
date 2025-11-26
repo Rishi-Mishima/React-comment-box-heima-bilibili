@@ -4,6 +4,7 @@ import avatar from './images/bozai.png'
 import { useState } from 'react'
 import classNames from 'classnames'
 import dayjs from 'dayjs'
+import { useRef } from 'react'
 /**
  * 评论列表的渲染和操作
  *
@@ -152,8 +153,18 @@ const App = () => {
   // 捕捉评论输入
   const [value, setInput] = useState("")
 
+  // 重新聚焦
+  const inputFocus = useRef(null)
+  const showDom = () => {
+    inputFocus.current.focus()
+  }
   const publishComment = () => {
     console.log(value);
+
+    showDom()
+
+
+
     const newId = new Date().getTime()
     setCommentList([
       ...commentList, {
@@ -214,9 +225,13 @@ const App = () => {
               placeholder="发一条友善的评论"
               value={value}
               onChange={(e) => setInput(e.target.value)}
+              ref={inputFocus}
             />
             {/* 发布按钮 */}
-            <div className="reply-box-send" onClick={publishComment}>
+            <div className="reply-box-send"
+              onClick={() => {
+                publishComment();
+              }}>
               <div className="send-text" >发布</div>
             </div>
           </div>
