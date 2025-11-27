@@ -72,6 +72,7 @@ const user = {
  *  最新 => 创建时间降序
  */
 
+// 用Hooks更新
 // 导航 Tab 数组
 const tabs = [
   { type: 'hot', text: '最热' },
