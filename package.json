@@ -20,7 +20,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "serve": "json-server db.json --3004"
+    "serve": "json-server --watch db.json --port 3004"
   },
   "eslintConfig": {
     "extends": [

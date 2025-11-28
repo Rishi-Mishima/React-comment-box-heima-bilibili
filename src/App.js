@@ -1,10 +1,11 @@
 import { tab } from '@testing-library/user-event/dist/tab'
 import './App.scss'
 import avatar from './images/bozai.png'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import classNames from 'classnames'
 import dayjs from 'dayjs'
 import { useRef } from 'react'
+import axios from 'axios'
 /**
  * 评论列表的渲染和操作
  *
@@ -87,7 +88,20 @@ const tabs = [
 
 const App = () => {
   // 渲染评论列表
-  const [commentList, setCommentList] = useState(defaultList)
+  //const [commentList, setCommentList] = useState(defaultList)
+
+  // 获取接口数据
+  const [commentList, setCommentList] = useState([])
+  useEffect(() => {
+    //请求数据
+    async function getList() {
+      //axios 
+
+      const res = await axios.get('http://localhost:3004/list')
+      setCommentList(res.data)
+    }
+    getList()
+  }, [])
 
   //sorting animation 
   const [isSorting, setIsSorting] = useState(false)
