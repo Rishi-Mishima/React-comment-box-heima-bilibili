@@ -83,13 +83,7 @@ const tabs = [
 //--------------
 // 1. // 渲染评论列表
 
-
-
-
-const App = () => {
-  // 渲染评论列表
-  //const [commentList, setCommentList] = useState(defaultList)
-
+function useGetList() {
   // 获取接口数据
   const [commentList, setCommentList] = useState([])
   useEffect(() => {
@@ -102,6 +96,19 @@ const App = () => {
     }
     getList()
   }, [])
+
+  return {
+    commentList,
+    setCommentList
+  }
+}
+
+
+const App = () => {
+  // 渲染评论列表
+  //const [commentList, setCommentList] = useState(defaultList)
+
+  const { commentList, setCommentList } = useGetList()
 
   //sorting animation 
   const [isSorting, setIsSorting] = useState(false)
