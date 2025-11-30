@@ -13,7 +13,7 @@ import axios from 'axios'
  * 2. 删除评论
  */
 
-// 评论列表数据
+// 评论列表数据 - 修改数据
 const defaultList = [
   {
     // 评论id
@@ -133,6 +133,7 @@ const App = () => {
     const newList = [...commentList]
 
     // 列表排序
+
     //lodash 
     if (newType === 'hot') {
       // 最热：
