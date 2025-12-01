@@ -54,6 +54,8 @@ const defaultList = [
   },
 ]
 
+// 封装item评论
+
 // 当前登录用户信息
 const user = {
   // 用户id
