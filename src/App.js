@@ -107,7 +107,7 @@ function useGetList() {
   }
 }
 
-function Item({ item }) {
+function Item({ item, onDel }) {
   <div className="reply-item">
     {/* 头像 */}
     <div className="root-reply-avatar">
@@ -135,7 +135,7 @@ function Item({ item }) {
           <span className="reply-time">点赞数:{item.like}</span>
 
           {user.uid === item.user.uid &&
-            <span className="delete-btn" onClick={() => handleDel(item.rpid)}>
+            <span className="delete-btn" onClick={() => onDel(item.rpid)}>
               删除
             </span>}
 
@@ -306,7 +306,7 @@ const App = () => {
         <div className={`reply-list ${isSorting ? 'sorting' : ''}`}>
           {/* 评论项 */}
 
-          {commentList.map(item => (<Item key={item.id} item={item}></Item>))}
+          {commentList.map(item => (<Item key={item.id} item={item} onDel={handleDel}></Item>))}
 
         </div>
       </div>
