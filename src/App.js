@@ -85,6 +85,8 @@ const tabs = [
 //--------------
 // 1. // 渲染评论列表
 
+// 封装HOOK函数
+
 function useGetList() {
   // 获取接口数据
   const [commentList, setCommentList] = useState([])
