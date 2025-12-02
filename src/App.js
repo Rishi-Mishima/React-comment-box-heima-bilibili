@@ -107,6 +107,45 @@ function useGetList() {
   }
 }
 
+function Item({ item }) {
+  <div className="reply-item">
+    {/* 头像 */}
+    <div className="root-reply-avatar">
+      <div className="bili-avatar">
+        <img
+          className="bili-avatar-img"
+          alt=""
+          src={item.user.avatar}
+        />
+      </div>
+    </div>
+
+    <div className="content-wrap">
+      {/* 用户名 */}
+      <div className="user-info">
+        <div className="user-name">{item.user.uname}</div>
+      </div>
+      {/* 评论内容 */}
+      <div className="root-reply">
+        <span className="reply-content">{item.content}</span>
+        <div className="reply-info">
+          {/* 评论时间 */}
+          <span className="reply-time">{item.ctime}</span>
+          {/* 评论数量 */}
+          <span className="reply-time">点赞数:{item.like}</span>
+
+          {user.uid === item.user.uid &&
+            <span className="delete-btn" onClick={() => handleDel(item.rpid)}>
+              删除
+            </span>}
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+}
+
 
 const App = () => {
   // 渲染评论列表
@@ -267,42 +306,7 @@ const App = () => {
         <div className={`reply-list ${isSorting ? 'sorting' : ''}`}>
           {/* 评论项 */}
 
-          {commentList.map(item => (<div key={item.rpid} className="reply-item">
-            {/* 头像 */}
-            <div className="root-reply-avatar">
-              <div className="bili-avatar">
-                <img
-                  className="bili-avatar-img"
-                  alt=""
-                  src={item.user.avatar}
-                />
-              </div>
-            </div>
-
-            <div className="content-wrap">
-              {/* 用户名 */}
-              <div className="user-info">
-                <div className="user-name">{item.user.uname}</div>
-              </div>
-              {/* 评论内容 */}
-              <div className="root-reply">
-                <span className="reply-content">{item.content}</span>
-                <div className="reply-info">
-                  {/* 评论时间 */}
-                  <span className="reply-time">{item.ctime}</span>
-                  {/* 评论数量 */}
-                  <span className="reply-time">点赞数:{item.like}</span>
-
-                  {user.uid === item.user.uid &&
-                    <span className="delete-btn" onClick={() => handleDel(item.rpid)}>
-                      删除
-                    </span>}
-
-
-                </div>
-              </div>
-            </div>
-          </div>))}
+          {commentList.map(item => (<Item key={item.id} item={item}></Item>))}
 
         </div>
       </div>
