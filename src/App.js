@@ -305,7 +305,8 @@ const App = () => {
         {/* 评论列表 */}
         <div className={`reply-list ${isSorting ? 'sorting' : ''}`}>
           {/* 评论项 */}
-
+          {/*  评论*/}
+          {/*  评论*/}
           {commentList.map(item => (<Item key={item.id} item={item} onDel={handleDel}></Item>))}
 
         </div>
