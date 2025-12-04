@@ -63,8 +63,9 @@ const user = {
   // 用户头像
   avatar,
   // 用户昵称
-  uname: '黑马前端',
+  uname: '黑马',
 }
+
 
 /**
  * 导航 Tab 的渲染和操作
